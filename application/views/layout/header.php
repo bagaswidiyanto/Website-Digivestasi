@@ -1,0 +1,370 @@
+<?php
+error_reporting(0);
+if (@$_GET['lang'] != '') {
+    $_SESSION['lang'] = $_GET['lang'];
+}
+
+
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L08YW6F3B7"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4464645872434990"
+        crossorigin="anonymous"></script>
+
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-L08YW6F3B7');
+    </script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <?php
+    $wbs = $this->db->get('tbl_website')->row();
+    ?>
+
+
+    <?php foreach ($this->db->query("SELECT * FROM tbl_navigation WHERE status = 'Y'")->result() as $n) { ?>
+    <?php if ($this->uri->segment(1) == $n->slug) {
+            $segment1 = $n->metaTitle . ' | ' . $n->title;
+            $metaKey = $n->metaKeywords;
+            $metaDes = $n->metaDescription;
+        } ?>
+    <?php } ?>
+
+    <?php
+    if ($this->uri->segment(1) == 'news') {
+        $segment1 = $wbs->metaTitle . ' | News';
+        $metaKey = $wbs->metaKeywords;
+        $metaDes = $wbs->metaDescription;
+    } else if ($this->uri->segment(1) == 'hotnews') {
+        $segment1 = $wbs->metaTitle . ' | Hot News';
+        $metaKey = $wbs->metaKeywords;
+        $metaDes = $wbs->metaDescription;
+    }
+    ?>
+
+    <?php if ($this->uri->segment(2) != 'detail') { ?>
+    <title><?= $segment1; ?> </title>
+    <meta name="keywords" content="<?= $metaKey; ?>">
+    <meta name="description" content="<?= $metaDes; ?>">
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<?= $wbs->metaTitle; ?>" />
+    <meta property="og:description" content="<?= $wbs->metaDescription; ?>" />
+    <meta property="og:url" content="https://digivestasi.com/" />
+    <meta property="og:image" itemprop="image" content="https://digivestasi.com/assets/imagenew/logo_400x300.jpg">
+    <link rel="apple-touch-icon" href="https://digivestasi.com/assets/imagenew/logo_400x300.jpg" />
+    <meta name="msapplication-TileImage" content="https://digivestasi.com/assets/imagenew/logo_400x300.jpg" />
+
+    <?php } ?>
+
+    <?php
+    if ($this->uri->segment(2) == 'detail') {
+        $meta = $this->db->get_where('tbl_posts', array('slug' => $this->uri->segment(3)))->row(); ?>
+    <title><?= $meta->Title; ?> - Digivestasi</title>
+    <meta name="keywords" content="<?= $meta->metaKeyword; ?>">
+    <meta name="description" content="<?= $meta->metaDescription; ?>">
+
+
+    <meta property="og:site_name" content="Digivestasi" />
+    <meta property="og:title" content="<?= $meta->Title; ?>" />
+    <meta property="og:description" content="<?= $meta->metaDescription; ?>" />
+    <meta property="og:url" content="https://digivestasi.com/news/detail/<?= $meta->slug; ?>" />
+    <meta property="og:type" content="article" />
+    <meta property="article:publisher" content="https://digivestasi.com" />
+    <meta property="article:section" content="Digivestasi" />
+    <meta property="article:tag" content="Digivestasi" />
+    <meta property="og:image" content="https://admin103.digivestasi.com/upload/posts/<?= $meta->image; ?>" />
+    <meta property="og:image:secure_url" content="https://admin103.digivestasi.com/upload/posts/<?= $meta->image; ?>" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="640" />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:image" content="https://admin103.digivestasi.com/upload/posts/<?= $meta->image; ?>" />
+    <meta property="twitter:site" content="@digivestasi" />
+
+    <?php } ?>
+
+    <!-- <meta property="og:type" content="article" />
+    <meta property="og:title" content="' . $meta->Title . '" />
+    <meta property="og:description" content="' . $meta->en_content . '" />
+    <meta property="og:image" content="https://admin103.digivestasi.com/upload/posts/' . $meta->image . '" />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="300" /> -->
+    <link rel="icon" href="<?= base_url() ?>assets/image/gap/logo_url.png" sizes="32x32" />
+    <!-- <link rel="icon" href="https://digivestasi.com/assets/imagenew/logo_link.jpg" sizes="192x192" /> -->
+
+
+    <base href="<?= base_url() ?>" />
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" crossorigin="anonymous"> -->
+    <!-- Template Stylesheet -->
+    <link href="<?= base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/css/stylenew.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/css/responsivenew.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/css/swiper.css" rel="stylesheet">
+
+
+
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/css/j-strap.css" /> -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/js/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css" /> -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/lib/owl-carousel/owl.carousel.css" /> -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/lib/owl-carousel/owl.transitions.css" /> -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/lib/magnific-popup/magnific-popup.css" /> -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/lib/rs-plugin/css/settings.css" /> -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/css/hint.min.css" /> -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/css/journal.css" /> -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/css/features.css" /> -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/css/header.css" /> -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/css/module.css" /> -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/css/pages.css" /> -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/css/account.css" /> -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/css/blog-manager.css" /> -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/css/side-column.css" /> -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/css/product.css" /> -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/category.css" />
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/css/footer.css" /> -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/css/icons.css" /> -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/responsive.css" />
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css" />
+
+    <!-- <script type="text/javascript" src="<?= base_url() ?>assets/lib/jquery/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/lib/jquery.ui/jquery-ui-1.8.24.min.js">
+    </script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/js/common.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/js/jquery/jquery.total-storage.min.js">
+    </script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/lib/jquery.tabs/tabs.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/lib/owl-carousel/owl.carousel.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/lib/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/lib/actual/jquery.actual.min.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/lib/countdown/jquery.countdown.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/lib/image-zoom/jquery.imagezoom.min.js">
+    </script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/lib/lazy/jquery.lazy.1.6.min.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/lib/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/lib/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/lib/quovolver/jquery.quovolver.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/lib/jqueryc/jqueryc.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/js/journal.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/font-awesome-4.7.0/css/font-awesome.min.css"> -->
+
+    <!--whatsapp-->
+    <link type="text/css" rel="stylesheet" href="<?= base_url(); ?>assets/css/whatsapp_chat.css" />
+    <!-- animate CSS -->
+    <link href="<?= base_url() ?>assets/css/animate.css" rel="stylesheet">
+    <!-- Fancy Box -->
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" /> -->
+    <!-- <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script> -->
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" integrity="sha512-OTcub78R3msOCtY3Tc6FzeDJ8N9qvQn1Ph49ou13xgA9VsH9+LRxoFU6EqLhW4+PKRfU+/HReXmSZXHEkpYoOA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+    <!-- Bootstrap JS Requirements -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="<?= base_url(); ?>assets/js/swiper.min.js"></script>
+    <script src="<?= base_url(); ?>assets/js/main.js"></script>
+    <!--[if (gte IE 6)&(lte IE 8)]><script src="catalog/view/theme/journal2/lib/selectivizr/selectivizr.min.js"></script><![endif]-->
+
+    <!-- fb -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            cache: true
+        });
+        $.getScript('https://connect.facebook.net/en_US/sdk.js', function() {
+            FB.init({
+                appId: '3220973974849367',
+                version: 'v2.7' // or v2.1, v2.2, v2.3, ...
+            });
+            $('#loginbutton,#feedbutton').removeAttr('disabled');
+            FB.getLoginStatus(updateStatusCallback);
+        });
+    });
+    </script>
+    <!-- end fb -->
+    <script>
+    Journal.COUNTDOWN = {
+        DAYS: "Days",
+        HOURS: "Hours",
+        MINUTES: "Min",
+        SECONDS: "Sec"
+    };
+    Journal.NOTIFICATION_BUTTONS =
+        '<div class="notification-buttons"><a class="button notification-cart" href="<?= base_url() ?>cart">View Cart</a><a class="button notification-checkout" href="<?= base_url() ?>checkout">Checkout</a></div>';
+    </script>
+
+
+</head>
+
+<body>
+
+    <!-- Topbar Start -->
+    <div class="top-menu text-light px-0">
+        <div class="container px-lg-5">
+            <div class="row align-items-center gx-0 d-none d-lg-flex ">
+                <div class="col-lg-2 text-center bg-orange">
+                    <div class="h-100 d-inline-flex align-items-center me-4">
+                        <h4 class="text-white">HOT NEWS</h4>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <marquee direction="" scrolldelay="0" scrollamount="3" onmouseover="this.stop();"
+                        onmouseout="this.start();">
+                        <?php foreach ($this->db->query("SELECT * FROM tbl_posts order by id DESC ")->result() as $berita) { ?>
+                        <a href="<?= base_url() . 'news/detail/' . $berita->slug ?>"><small style="font-size: 14px;">🔥
+                                <?= $berita->Title; ?></small></a>
+                        <?php } ?>
+                    </marquee>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    <div class="container-fluid top-login text-light px-0 py-2">
+        <div class="container px-lg-5">
+            <div class="row align-items-center justify-content-between gx-0 py-2 d-flex">
+                <div class="col-lg-8 col-sm-5 col-5">
+                    <a href="<?= base_url() ?>">
+                        <div class="logo-header">
+                            <img src="<?= base_url(); ?>assets/imagenew/logo_header.png" class="img-fluid" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-7 col-7 text-center">
+                    <form role="search" method="get" action="<?= base_url(); ?>news" class="position-relative">
+                        <input type="text" name="search" placeholder="Cari berita..." class="form-control">
+                        <button type="submit" class="border-0 bg-transparent position-absolute top-0 end-0 m-2"><i
+                                class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 py-3 py-lg-0 bg-black">
+        <div class="container justify-content-end  px-lg-5">
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav p-4 p-lg-0">
+                    <a href="<?= base_url(); ?>" class="nav-item nav-link active">Beranda</a>
+                    <a href="<?= base_url(); ?>news" class="nav-item nav-link">Berita</a>
+                    <?php foreach ($this->db->query("SELECT * FROM tbl_subkategori where aktif='Y' order by id asc")->result() as $sub) { ?>
+                    <a class="nav-item nav-link tab-header"
+                        onclick="getBerita(<?= $sub->id; ?>,'<?= $sub->kategori; ?>')"><?= $sub->kategori; ?></a>
+                    <?php } ?>
+                    <a href="<?= base_url(); ?>about" class="nav-item nav-link">About us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="tab-crypto d-inline-flex d-lg-none bg-black w-100">
+        <div class="container">
+
+            <ul class="nav nav-tabs border-0" id="myTab">
+                <?php foreach ($this->db->query("SELECT * FROM tbl_subkategori where aktif='Y' order by id asc")->result() as $sub) { ?>
+                <li class="nav-item">
+                    <a class="nav-link"
+                        onclick="getBerita(<?= $sub->id; ?>,'<?= $sub->kategori; ?>')"><?= $sub->kategori; ?></a>
+                </li>
+                <?php } ?>
+            </ul>
+        </div>
+    </div>
+
+    <style>
+    .tab-crypto ul {
+        list-style: none;
+    }
+
+    .tab-crypto ul li {
+        margin-right: 10px;
+        border: none;
+    }
+
+    .tab-crypto ul li .nav-link {
+        color: #fff;
+        border: 0;
+        cursor: pointer;
+    }
+
+    .tab-crypto ul li:hover .nav-link {
+        color: #FF8700;
+        border: 0;
+    }
+
+    .tab-crypto ul li :hover {
+        border: 0;
+    }
+    </style>
+
+
+    <!-- Navbar End -->
+
+    <script>
+    function getBerita(id, kategori) {
+
+        base_url = '<?php echo base_url(); ?>';
+
+        $.ajax({
+
+            type: "GET",
+
+            url: base_url + "Hotnews",
+
+            data: {
+                'id': id,
+                'kategori': kategori
+            },
+
+            success: function(html) {
+
+                window.location = base_url + 'hotnews/list/?id=' + id;
+
+            },
+
+            error: function() {
+
+
+            }
+
+        });
+
+    }
+    </script>

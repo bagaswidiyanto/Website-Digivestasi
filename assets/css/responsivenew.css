@@ -1,0 +1,124 @@
+@media only screen and (min-width: 1200px)  {
+    .top-login .logo-header img {
+        max-width: 28%;
+    }
+}
+
+
+@media only screen and (min-width: 992px) and (max-width: 1199px)  {
+    .navbar .navbar-nav .nav-link {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (min-width: 992px)  {
+    .top-login .logo-header img {
+        max-width: 30%;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .news-popular .swiper-button-prev {
+        left: 85%;
+    }
+}
+
+
+@media only screen and (max-width: 992px) {
+    .latest-news .box-news .title p {
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    .tab-news .box-news .title p {
+        font-size: 24px;
+        line-height: 24px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    /* .latest-news .box-news .img {
+        height: calc(100vh - 528px);
+    }
+    
+    .tab-news .box-news .img {
+        height: calc(100vh - 528px);
+    } */
+
+    .headline .content-area .box-news .content {
+        padding: 10px;
+    }
+
+    .headline .content-area .box-news .headline-top {
+        padding: 15px 30px;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    /* .latest-news .box-news .img {
+        height: calc(100vh - 565px);
+    } */
+
+    .latest-news .box-news .category p {
+        font-size: 10px;
+    }
+    
+    .latest-news .box-news .title p {
+        font-size: 14px;
+        line-height: 14px;
+    }
+    
+    
+    .latest-news .box-news .desk p {
+        font-size: 10px;
+    }
+    
+    .latest-news .box-news .date p {
+        font-size: 10px;
+    }
+    
+    
+
+
+    /* .tab-news .box-news .img {
+        height: calc(100vh - 565px);
+    } */
+    
+    .tab-news .box-news .title p {
+        font-size: 16px;
+        line-height: 16px;
+    }
+    
+    .tab-news .box-news .desk p {
+        font-size: 10px;
+    }
+    
+    .tab-news .box-news .date p {
+        font-size: 10px;
+    }
+    
+    .share-news .share {
+        padding: 7px 10px;
+    }
+    
+    .share-news .share .fab {
+        font-size: 1.5rem;
+    }
+    
+    
+}
+@media only screen and (max-width: 486px) {
+    .headline .content-area .box-news .headline-top {
+        padding: 10px 20px;
+      }
+}
+
+@media only screen and (max-width: 423px) {
+    .headline .content-area .box-news .headline-top {
+        padding: 8px 10px;
+      }
+    .headline .content-area .box-news .headline-top h5 {
+      font-size:  0.8rem;
+    }
+}
