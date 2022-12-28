@@ -55,7 +55,7 @@ $curr_time     = date('H:i:s');
                     <a href="<?= base_url(); ?>contact" class="text-white me-3">Kontak</a>
                 </div>
                 <div class="copyright mt-4 d-none d-sm-block">
-                    <p>© 2022 - <?= date("Y") ?> <a style="color:white;" href="https://digivestasi.com/">Digivestasi</a>
+                    <p>© 2022 - <?= date("Y") ?> <a style="color:white;" href="https://www.digivestasi.com">Digivestasi</a>
                         . All rights reserved.</p>
 
                 </div>

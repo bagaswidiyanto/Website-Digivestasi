@@ -1,88 +1,116 @@
-<div class="container-xxl">
-    <div class="container px-lg-5">
+<div class="container-xxl contact">
+    <div class="container py-5 px-lg-5">
 
         <div id="notification"></div>
         <div class="breadcrumb">
-            <a href="<?= base_url() ?>">Home</a>
-            &raquo; <a href="<?= base_url() ?>contact">Contact Us</a>
+            <a href="<?= base_url() ?>" style="color: #FF8700;" class="me-2">Home</a>
+            &raquo; <a href="<?= base_url() ?>contact" class="ms-2">Contact Us</a>
         </div>
 
-        <div id="content" class="contact-page">
-            <h1 class="heading-title">Contact Us</h1>
-            <div id="journal-cms-block-1832560519" class="box cms-blocks hide-on-mobile " style="">
-                <div class="blocks">
-                    <div class="cms-block xs-100 sm-100 md-100 lg-100 xl-100">
-                        <span class="block-content" style="">
-                            <div class="editor-content" style="text-align: left">
-                                <p><iframe allowfullscreen="" frameborder="0" height="250"
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1983.1707944844875!2d107.02375830049128!3d-6.218606414134724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTMnMDcuMCJTIDEwN8KwMDEnMjcuOSJF!5e0!3m2!1sid!2sid!4v1619667830373!5m2!1sid!2sid"
-                                        width="100%" style="border:0" height="500" style="border:0;" allowfullscreen=""
-                                        loading="lazy"></iframe> </p>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="header-title mb-4">
+                    <h1 class="fw-bold">Contact Us</h1>
+                </div>
+                <div class="address">
+                    <div class="header-content mb-3">
+                        <h3 class="fw-bold">Address:</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1 mb-10">
+                            <img src="<?= base_url(); ?>assets/imagenew/map-pin.svg" class="img-fluid me-3" alt="">
+                        </div>
+                        <div class="col-lg-11 mb-10">
+                            <p><?= $contactus->address ?></p>
+                        </div>
+                        <div class="col-lg-1 mb-10">
+                            <img src="<?= base_url(); ?>assets/imagenew/mail.svg" class="img-fluid me-3" alt="">
+                        </div>
+                        <div class="col-lg-11 mb-10">
+                            <div class="mail">
+                                <p>Email: <?= $contactus->email ?></p>
+                                <p>Website: <?= $contactus->website ?></p>
                             </div>
-                            <!-- style="border:0" width="100%"></iframe> -->
-
-                        </span>
+                        </div>
+                        <div class="col-lg-1 mb-10">
+                        </div>
+                        <div class="col-lg-11 mb-10">
+                            <div class="office">
+                                <p>Office:</p>
+                                <p><?= $contactus->phoneOffice ?></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-1 mb-10">
+                        </div>
+                        <div class="col-lg-11 mb-10">
+                            <div class="phone">
+                                <p>Phone:</p>
+                                <p><?= $contactus->phone ?></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <script>
-            Journal.equalHeight($('#journal-cms-block-1832560519 .cms-block'), '.block-content');
-            </script>
-            <form action="<?= base_url() ?>contact" method="post" enctype="multipart/form-data">
-                <h2 class="secondary-title">Our Location</h2>
-                <div class="contact-info">
-                    <div class="content">
-                        <div class="left"><b>Address:</b><br />
-                            <?= $contactus->address ?><br />
+            <div class="col-lg-6">
+                <style>
+                .contact .mb-10 {
+                    margin-bottom: 20px;
+                }
 
-                            <!-- <br /> -->
-                            <!--  Innotek Instruments<br />
-        Barlas Street, Pacca Garha<br />
-Sialkot - 51310, Pakistan<br />
-<br /> -->
-                            <!-- Email: info@innotek.com.pk<br />
-Website: www.innotek.com.pk<br /> -->
-                            Email: <?= $contactus->email ?><br />
-                            Website: <?= $contactus->website ?><br />
-                        </div>
-                        <!-- <div class="right">
-                <b>Telephone:</b><br />
-        +92 (52) 4270836<br />
-        <br />
-                      </div> -->
+                .form {
+                    background: #131313;
+                    border-radius: 10px;
+                    padding: 35px;
+                    box-shadow: 12px 4px 28px 5px rgba(0, 0, 0, 0.25);
+                }
 
-                        <div class="right">
-                            <b>Office:</b><br />
-                            <?= $contactus->phoneOffice ?><br />
-                            <br />
-                            <b>Phone:</b><br />
-                            <?= $contactus->phone ?><br />
+                .form label {
+                    color: #fff;
+                    margin-bottom: 10px;
+                }
+
+                .form input {
+                    background-color: #D7CDCD;
+                }
+
+                .form .submit {
+                    background: #FF8700;
+                    padding: 7px 20px;
+                    border-radius: 10px;
+                    border: none;
+                    text-transform: uppercase;
+                }
+
+                .maps {
+                    background: #FF8700;
+                }
+                </style>
+                <div class="form">
+                    <form action="<?= base_url() ?>contact" method="post">
+                        <div class="mb-3">
+                            <label>First Name :</label>
+                            <input type="text" name="name" class="form-control">
                         </div>
-                    </div>
+                        <div class="mb-3">
+                            <label>E-Mail Address :</label>
+                            <input type="text" name="email" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label>Enquiry :</label>
+                            <textarea name="enquiry" class="form-control" rows="3"></textarea>
+                        </div>
+                        <input type="submit" class="submit fw-bold" value="Send Message">
+                    </form>
                 </div>
-                <h2 class="secondary-title">Contact Form</h2>
-                <div class="content">
-                    <b>First Name:</b><br />
-                    <input type="text" name="name" value="" />
-                    <br />
-                    <br />
-                    <b>E-Mail Address:</b><br />
-                    <input type="text" name="email" value="" />
-                    <br />
-                    <br />
-                    <b>Enquiry:</b><br />
-                    <textarea name="enquiry" cols="40" rows="10"></textarea>
-                    <br />
-                    <br />
-                    <b>Enter the code in the box below:</b><br />
-                    <input type="text" name="captcha" value="" />
-                    <br />
-                    <img src="index.php?route=information/contact/captcha" alt="" />
-                </div>
-                <div class="buttons">
-                    <div class="right"><input type="submit" value="Continue" class="button" /></div>
-                </div>
-            </form>
+            </div>
         </div>
+    </div>
+</div>
+
+<div class="container-fluid maps">
+    <div class="container-xxl py-5 px-lg-5">
+        <iframe allowfullscreen="" frameborder="0" height="250"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1983.1707944844875!2d107.02375830049128!3d-6.218606414134724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTMnMDcuMCJTIDEwN8KwMDEnMjcuOSJF!5e0!3m2!1sid!2sid!4v1619667830373!5m2!1sid!2sid"
+            width="100%" style="border:0" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 </div>

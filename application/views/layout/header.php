@@ -13,18 +13,17 @@ if (@$_GET['lang'] != '') {
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-L08YW6F3B7"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4464645872434990"
-        crossorigin="anonymous"></script>
-
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4464645872434990" crossorigin="anonymous"></script>
+<meta name="p:domain_verify" content="439241dc5ac9b6070efef55ff2f8059b"/>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-L08YW6F3B7');
+        gtag('config', 'G-L08YW6F3B7');
     </script>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -34,7 +33,7 @@ if (@$_GET['lang'] != '') {
 
 
     <?php foreach ($this->db->query("SELECT * FROM tbl_navigation WHERE status = 'Y'")->result() as $n) { ?>
-    <?php if ($this->uri->segment(1) == $n->slug) {
+        <?php if ($this->uri->segment(1) == $n->slug) {
             $segment1 = $n->metaTitle . ' | ' . $n->title;
             $metaKey = $n->metaKeywords;
             $metaDes = $n->metaDescription;
@@ -54,43 +53,45 @@ if (@$_GET['lang'] != '') {
     ?>
 
     <?php if ($this->uri->segment(2) != 'detail') { ?>
-    <title><?= $segment1; ?> </title>
-    <meta name="keywords" content="<?= $metaKey; ?>">
-    <meta name="description" content="<?= $metaDes; ?>">
-
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="<?= $wbs->metaTitle; ?>" />
-    <meta property="og:description" content="<?= $wbs->metaDescription; ?>" />
-    <meta property="og:url" content="https://digivestasi.com/" />
-    <meta property="og:image" itemprop="image" content="https://digivestasi.com/assets/imagenew/logo_400x300.jpg">
-    <link rel="apple-touch-icon" href="https://digivestasi.com/assets/imagenew/logo_400x300.jpg" />
-    <meta name="msapplication-TileImage" content="https://digivestasi.com/assets/imagenew/logo_400x300.jpg" />
+        <title><?= $segment1; ?> </title>
+        <meta name="keywords" content="<?= $metaKey; ?>">
+        <meta name="description" content="<?= $metaDes; ?>">
+        <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+        <link rel="canonical" href="https://www.digivestasi.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="<?= $wbs->metaTitle; ?>" />
+        <meta property="og:description" content="<?= $wbs->metaDescription; ?>" />
+        <meta property="og:url" content="https://www.digivestasi.com/" />
+        <meta property="og:image" itemprop="image" content="https://www.digivestasi.com/assets/imagenew/logo_400x300.jpg">
+        <link rel="apple-touch-icon" href="https://www.digivestasi.com/assets/imagenew/logo_400x300.jpg" />
+        <meta name="msapplication-TileImage" content="https://www.digivestasi.com/assets/imagenew/logo_400x300.jpg" />
 
     <?php } ?>
 
     <?php
     if ($this->uri->segment(2) == 'detail') {
         $meta = $this->db->get_where('tbl_posts', array('slug' => $this->uri->segment(3)))->row(); ?>
-    <title><?= $meta->Title; ?> - Digivestasi</title>
-    <meta name="keywords" content="<?= $meta->metaKeyword; ?>">
-    <meta name="description" content="<?= $meta->metaDescription; ?>">
+        <title><?= $meta->Title; ?> - Digivestasi</title>
+        <meta name="keywords" content="<?= $meta->metaKeyword; ?>">
+        <meta name="description" content="<?= $meta->metaDescription; ?>">
 
-
-    <meta property="og:site_name" content="Digivestasi" />
-    <meta property="og:title" content="<?= $meta->Title; ?>" />
-    <meta property="og:description" content="<?= $meta->metaDescription; ?>" />
-    <meta property="og:url" content="https://digivestasi.com/news/detail/<?= $meta->slug; ?>" />
-    <meta property="og:type" content="article" />
-    <meta property="article:publisher" content="https://digivestasi.com" />
-    <meta property="article:section" content="Digivestasi" />
-    <meta property="article:tag" content="Digivestasi" />
-    <meta property="og:image" content="https://admin103.digivestasi.com/upload/posts/<?= $meta->image; ?>" />
-    <meta property="og:image:secure_url" content="https://admin103.digivestasi.com/upload/posts/<?= $meta->image; ?>" />
-    <meta property="og:image:width" content="1280" />
-    <meta property="og:image:height" content="640" />
-    <meta property="twitter:card" content="summary" />
-    <meta property="twitter:image" content="https://admin103.digivestasi.com/upload/posts/<?= $meta->image; ?>" />
-    <meta property="twitter:site" content="@digivestasi" />
+        <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+        <link rel="canonical" href="https://www.digivestasi.com" />
+        <meta property="og:site_name" content="Digivestasi" />
+        <meta property="og:title" content="<?= $meta->Title; ?>" />
+        <meta property="og:description" content="<?= $meta->metaDescription; ?>" />
+        <meta property="og:url" content="https://www.digivestasi.com/news/detail/<?= $meta->slug; ?>" />
+        <meta property="og:type" content="article" />
+        <meta property="article:publisher" content="https://www.digivestasi.com" />
+        <meta property="article:section" content="Digivestasi" />
+        <meta property="article:tag" content="Digivestasi" />
+        <meta property="og:image" content="https://admin103.digivestasi.com/upload/posts/<?= $meta->image; ?>" />
+        <meta property="og:image:secure_url" content="https://admin103.digivestasi.com/upload/posts/<?= $meta->image; ?>" />
+        <meta property="og:image:width" content="1280" />
+        <meta property="og:image:height" content="640" />
+        <meta property="twitter:card" content="summary" />
+        <meta property="twitter:image" content="https://admin103.digivestasi.com/upload/posts/<?= $meta->image; ?>" />
+        <meta property="twitter:site" content="@digivestasi" />
 
     <?php } ?>
 
@@ -101,7 +102,7 @@ if (@$_GET['lang'] != '') {
     <meta property="og:image:width" content="400" />
     <meta property="og:image:height" content="300" /> -->
     <link rel="icon" href="<?= base_url() ?>assets/image/gap/logo_url.png" sizes="32x32" />
-    <!-- <link rel="icon" href="https://digivestasi.com/assets/imagenew/logo_link.jpg" sizes="192x192" /> -->
+    <!-- <link rel="icon" href="https://www.digivestasi.com/assets/imagenew/logo_link.jpg" sizes="192x192" /> -->
 
 
     <base href="<?= base_url() ?>" />
@@ -196,30 +197,30 @@ if (@$_GET['lang'] != '') {
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css" />
     <script>
-    $(document).ready(function() {
-        $.ajaxSetup({
-            cache: true
-        });
-        $.getScript('https://connect.facebook.net/en_US/sdk.js', function() {
-            FB.init({
-                appId: '3220973974849367',
-                version: 'v2.7' // or v2.1, v2.2, v2.3, ...
+        $(document).ready(function() {
+            $.ajaxSetup({
+                cache: true
             });
-            $('#loginbutton,#feedbutton').removeAttr('disabled');
-            FB.getLoginStatus(updateStatusCallback);
+            $.getScript('https://connect.facebook.net/en_US/sdk.js', function() {
+                FB.init({
+                    appId: '3220973974849367',
+                    version: 'v2.7' // or v2.1, v2.2, v2.3, ...
+                });
+                $('#loginbutton,#feedbutton').removeAttr('disabled');
+                FB.getLoginStatus(updateStatusCallback);
+            });
         });
-    });
     </script>
     <!-- end fb -->
     <script>
-    Journal.COUNTDOWN = {
-        DAYS: "Days",
-        HOURS: "Hours",
-        MINUTES: "Min",
-        SECONDS: "Sec"
-    };
-    Journal.NOTIFICATION_BUTTONS =
-        '<div class="notification-buttons"><a class="button notification-cart" href="<?= base_url() ?>cart">View Cart</a><a class="button notification-checkout" href="<?= base_url() ?>checkout">Checkout</a></div>';
+        Journal.COUNTDOWN = {
+            DAYS: "Days",
+            HOURS: "Hours",
+            MINUTES: "Min",
+            SECONDS: "Sec"
+        };
+        Journal.NOTIFICATION_BUTTONS =
+            '<div class="notification-buttons"><a class="button notification-cart" href="<?= base_url() ?>cart">View Cart</a><a class="button notification-checkout" href="<?= base_url() ?>checkout">Checkout</a></div>';
     </script>
 
 
@@ -237,11 +238,10 @@ if (@$_GET['lang'] != '') {
                     </div>
                 </div>
                 <div class="col-lg">
-                    <marquee direction="" scrolldelay="0" scrollamount="3" onmouseover="this.stop();"
-                        onmouseout="this.start();">
+                    <marquee direction="" scrolldelay="0" scrollamount="3" onmouseover="this.stop();" onmouseout="this.start();">
                         <?php foreach ($this->db->query("SELECT * FROM tbl_posts order by id DESC ")->result() as $berita) { ?>
-                        <a href="<?= base_url() . 'news/detail/' . $berita->slug ?>"><small style="font-size: 14px;">🔥
-                                <?= $berita->Title; ?></small></a>
+                            <a href="<?= base_url() . 'news/detail/' . $berita->slug ?>"><small style="font-size: 14px;">🔥
+                                    <?= $berita->Title; ?></small></a>
                         <?php } ?>
                     </marquee>
                 </div>
@@ -264,8 +264,7 @@ if (@$_GET['lang'] != '') {
                 <div class="col-lg-4 col-sm-7 col-7 text-center">
                     <form role="search" method="get" action="<?= base_url(); ?>news" class="position-relative">
                         <input type="text" name="search" placeholder="Cari berita..." class="form-control">
-                        <button type="submit" class="border-0 bg-transparent position-absolute top-0 end-0 m-2"><i
-                                class="fa fa-search" aria-hidden="true"></i></button>
+                        <button type="submit" class="border-0 bg-transparent position-absolute top-0 end-0 m-2"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
                 </div>
             </div>
@@ -276,8 +275,7 @@ if (@$_GET['lang'] != '') {
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 py-3 py-lg-0 bg-black">
         <div class="container justify-content-end  px-lg-5">
-            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
-                data-bs-target="#navbarCollapse">
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -285,8 +283,7 @@ if (@$_GET['lang'] != '') {
                     <a href="<?= base_url(); ?>" class="nav-item nav-link active">Beranda</a>
                     <a href="<?= base_url(); ?>news" class="nav-item nav-link">Berita</a>
                     <?php foreach ($this->db->query("SELECT * FROM tbl_subkategori where aktif='Y' order by id asc")->result() as $sub) { ?>
-                    <a class="nav-item nav-link tab-header"
-                        onclick="getBerita(<?= $sub->id; ?>,'<?= $sub->kategori; ?>')"><?= $sub->kategori; ?></a>
+                        <a class="nav-item nav-link tab-header" onclick="getBerita(<?= $sub->id; ?>,'<?= $sub->kategori; ?>')"><?= $sub->kategori; ?></a>
                     <?php } ?>
                     <a href="<?= base_url(); ?>about" class="nav-item nav-link">About us</a>
                 </div>
@@ -299,72 +296,71 @@ if (@$_GET['lang'] != '') {
 
             <ul class="nav nav-tabs border-0" id="myTab">
                 <?php foreach ($this->db->query("SELECT * FROM tbl_subkategori where aktif='Y' order by id asc")->result() as $sub) { ?>
-                <li class="nav-item">
-                    <a class="nav-link"
-                        onclick="getBerita(<?= $sub->id; ?>,'<?= $sub->kategori; ?>')"><?= $sub->kategori; ?></a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="getBerita(<?= $sub->id; ?>,'<?= $sub->kategori; ?>')"><?= $sub->kategori; ?></a>
+                    </li>
                 <?php } ?>
             </ul>
         </div>
     </div>
 
     <style>
-    .tab-crypto ul {
-        list-style: none;
-    }
+        .tab-crypto ul {
+            list-style: none;
+        }
 
-    .tab-crypto ul li {
-        margin-right: 10px;
-        border: none;
-    }
+        .tab-crypto ul li {
+            margin-right: 10px;
+            border: none;
+        }
 
-    .tab-crypto ul li .nav-link {
-        color: #fff;
-        border: 0;
-        cursor: pointer;
-    }
+        .tab-crypto ul li .nav-link {
+            color: #fff;
+            border: 0;
+            cursor: pointer;
+        }
 
-    .tab-crypto ul li:hover .nav-link {
-        color: #FF8700;
-        border: 0;
-    }
+        .tab-crypto ul li:hover .nav-link {
+            color: #FF8700;
+            border: 0;
+        }
 
-    .tab-crypto ul li :hover {
-        border: 0;
-    }
+        .tab-crypto ul li :hover {
+            border: 0;
+        }
     </style>
 
 
     <!-- Navbar End -->
 
     <script>
-    function getBerita(id, kategori) {
+        function getBerita(id, kategori) {
 
-        base_url = '<?php echo base_url(); ?>';
+            base_url = '<?php echo base_url(); ?>';
 
-        $.ajax({
+            $.ajax({
 
-            type: "GET",
+                type: "GET",
 
-            url: base_url + "Hotnews",
+                url: base_url + "Hotnews",
 
-            data: {
-                'id': id,
-                'kategori': kategori
-            },
+                data: {
+                    'id': id,
+                    'kategori': kategori
+                },
 
-            success: function(html) {
+                success: function(html) {
 
-                window.location = base_url + 'hotnews/list/?id=' + id;
+                    window.location = base_url + 'hotnews/list/?id=' + id;
 
-            },
+                },
 
-            error: function() {
+                error: function() {
 
 
-            }
+                }
 
-        });
+            });
 
-    }
+        }
     </script>
